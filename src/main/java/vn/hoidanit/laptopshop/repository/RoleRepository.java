@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import vn.hoidanit.laptopshop.domain.Role;
 
 @Repository
-public interface RoleRepository extends JpaRepository {
+public interface RoleRepository extends JpaRepository<Role, Long> {
 
     Role findByName(String name);
 }
