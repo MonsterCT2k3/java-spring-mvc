@@ -48,6 +48,16 @@ uri="http://www.springframework.org/tags/form" prefix="form"%>
                     <li class="list-group-item">Email: ${user.email}</li>
                     <li class="list-group-item">FullName: ${user.fullName}</li>
                     <li class="list-group-item">Address: ${user.address}</li>
+                    <li class="list-group-item">Role: ${user.role.name}</li>
+                    <li class="list-group-item">
+                      Avatar:
+                      <img
+                        class="ms-3"
+                        width="200px"
+                        src="/images/avatar/${user.avatar}"
+                        alt="image preview"
+                      />
+                    </li>
                   </ul>
                 </div>
                 <a href="/admin/user" class="btn btn-success mt-3">Back</a>
