@@ -12,7 +12,7 @@ uri="http://www.springframework.org/tags/form" prefix="form"%>
     />
     <meta name="description" content="Hỏi Dân IT - Dự án laptopshop" />
     <meta name="author" content="Hỏi Dân IT" />
-    <title>View User - Hỏi Dân IT</title>
+    <title>Delete Product - Hỏi Dân IT</title>
 
     <link href="/css/styles.css" rel="stylesheet" />
     <script
@@ -28,33 +28,36 @@ uri="http://www.springframework.org/tags/form" prefix="form"%>
       <div id="layoutSidenav_content">
         <main>
           <div class="container-fluid px-4">
-            <h1 class="mt-4">Manage Product</h1>
+            <h1 class="mt-4">Manage Products</h1>
             <ol class="breadcrumb mb-4">
               <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
-              <li class="breadcrumb-item active">Product</li>
+              <li class="breadcrumb-item active">Products</li>
             </ol>
             <div class="container mt-5">
               <div class="row">
-                <div class="col-12 mx-auto mb-3">
-                  <div class="d-flex justify-content-between">
-                    <h3>Product detail with id = ${id}</h3>
+                <div class="col-md-6 col-12 mx-auto">
+                  <h3>Delete the product with id = ${id}</h3>
+                  <hr />
+                  <div class="alert alert-danger">
+                    Are you sure to delete this product ?
                   </div>
+                  <form:form
+                    method="post"
+                    modelAttribute="newProduct"
+                    action="/admin/product/delete"
+                  >
+                    <div class="mb-3" style="display: none">
+                      <label class="form-label">Id: </label>
+                      <form:input
+                        type="text"
+                        value="${id}"
+                        class="form-control"
+                        path="id"
+                      />
+                    </div>
+                    <button class="btn btn-danger">Confirm</button>
+                  </form:form>
                 </div>
-                <hr />
-
-                <div class="card" style="width: 60%">
-                  <img
-                    src="/images/product/${product.image}"
-                    alt="Image Preview"
-                  />
-                  <div class="card-header">Product Information</div>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID: ${product.id}</li>
-                    <li class="list-group-item">Name: ${product.name}</li>
-                    <li class="list-group-item">Price: ${product.price}</li>
-                  </ul>
-                </div>
-                <a href="/admin/product" class="btn btn-success mt-3">Back</a>
               </div>
             </div>
           </div>
