@@ -39,16 +39,32 @@ uri="http://www.springframework.org/tags/form" %>
                       action="/register"
                       modelAttribute="registerUser"
                     >
+                      <c:set var="errorPassword">
+                        <form:errors
+                          path="confirmPassword"
+                          cssClass="invalid-feedback"
+                        />
+                      </c:set>
+                      <c:set var="errorEmail">
+                        <form:errors path="email" cssClass="invalid-feedback" />
+                      </c:set>
+                      <c:set var="errorFirstName">
+                        <form:errors
+                          path="firstName"
+                          cssClass="invalid-feedback"
+                        />
+                      </c:set>
                       <div class="row mb-3">
                         <div class="col-md-6">
                           <div class="form-floating mb-3 mb-md-0">
                             <form:input
-                              class="form-control"
+                              class="form-control ${not empty errorEmail ? 'is-invalid' : ''}"
                               type="text"
                               placeholder="Enter your first name"
                               path="firstName"
                             />
                             <label for="inputFirstName">First name</label>
+                            ${errorFirstName}
                           </div>
                         </div>
                         <div class="col-md-6">
@@ -65,23 +81,25 @@ uri="http://www.springframework.org/tags/form" %>
                       </div>
                       <div class="form-floating mb-3">
                         <form:input
-                          class="form-control"
+                          class="form-control ${not empty errorEmail ? 'is-invalid' : ''}"
                           type="email"
                           placeholder="name@example.com"
                           path="email"
                         />
                         <label for="inputEmail">Email address</label>
+                        ${errorEmail}
                       </div>
                       <div class="row mb-3">
                         <div class="col-md-6">
                           <div class="form-floating mb-3 mb-md-0">
                             <form:input
-                              class="form-control"
+                              class="form-control ${not empty errorPassword ? 'is-invalid' : ''}"
                               type="password"
                               placeholder="Create a password"
                               path="password"
                             />
                             <label for="inputPassword">Password</label>
+                            ${errorPassword}
                           </div>
                         </div>
                         <div class="col-md-6">
